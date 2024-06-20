@@ -16,8 +16,11 @@ exports.createEvent = async (event) => {
         // Generar un ID único para el evento
         const eventoId = v4();
         const createDate = new Date().toISOString();
+        const rquid = v4();
+        const id = rquid;
 
         const newEvent = {
+            id,
             eventoId,
             nombre,
             descripcion,
