@@ -13,32 +13,26 @@ provider:
       Action:
         - dynamodb:*
       Resource:
-        - arn:aws:dynamodb:us-east-1:519010577666:table/Cliente
+        - arn:aws:dynamodb:us-east-1:519010577666:table/Eventos
 functions:
-  hello:
-    handler: src/handler.hello
+  createEvent:
+    handler: src/createEvent.createEvent
     events:
       - httpApi:
-          path: /
-          method: get
-  createUser:
-    handler: src/addUser.addUser
-    events:
-      - httpApi:
-          path: /createUser
+          path: /createEvent
           method: post
-  getUser:
-    handler: src/getUser.getUser
+  getEvents:
+    handler: src/getEvents.getEventById
     events:
       - httpApi:
-          path: /getUser/{id}
+          path: /getEvents/{id}
           method: get
-  updateUser:
-    handler: src/updateUser.updateUser
+  updateEvent:
+    handler: src/updateEvent.updateEvent
     events:
       - httpApi:
-          path: /updateUser
-          method: post
+          path: /updateEvent/{id}
+          method: put
 resources:
   Resources:
     TaskTable:
